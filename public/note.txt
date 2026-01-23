@@ -1,0 +1,113 @@
+/**
+ * @file: profile.config.ts
+ * @author: Divyansh Kumar
+ * @summary: BCA student & aspiring full-stack developer
+ */
+
+// ----------------------------------
+// 1. CORE DEPENDENCIES & SKILLS 
+// ----------------------------------
+
+const TECH_STACK = {
+  frontend: [
+    "HTML",        // 100%
+    "CSS",         // 90%
+    "JavaScript",  // 90%
+    "React.js",    // 70%
+    "TailwindCSS", // 80%
+  ],
+  backend: [
+    "Node.js",     // 10%
+    "Express.js",  // 10%
+  ],
+  database: [
+    "MySQL",       // 70%
+  ],
+  tools: [
+    "Git & GitHub", // 60%
+    "Figma",        // 50%
+    "Canva",        // 70%
+    "Linux",        // 60%
+  ],
+};
+
+// --------------------------------------------------
+// 2. CURRENT STATUS
+// --------------------------------------------------
+
+const CURRENT_STATUS = {
+  role: "BCA Student",
+  university: "REVA University, Bangalore",
+  focus: "Full-stack development & UI/UX",
+  availability: "Open to internships",
+};
+
+// -----------------------
+// 3. PROJECTS 
+// -----------------------
+
+const PROJECTS = [
+  {
+    name: "SkillSpace",
+    description:
+      "An online learning platform concept for courses, mentorship, and skill exchange.",
+    tech: ["React", "TailwindCSS", "Node.js"],
+  },
+  {
+    name: "Snake Game",
+    description:
+      "A simple JavaScript game to improve logic and DOM handling.",
+    tech: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    name: "NoCLang Simulator",
+    description:
+      "A visual simulator to understand Network-on-Chip concepts.",
+    tech: ["React", "JavaScript"],
+  },
+];
+
+// --------------------------------------------------
+// 4. EDUCATION
+// --------------------------------------------------
+
+const EDUCATION = [
+  {
+    institute: "REVA University",
+    degree: "Bachelor of Computer Applications (BCA)",
+    duration: "2024 – 2027",
+    location: "Bangalore, India",
+    semesterPerformance: {
+      semester1: "8.5",
+      semester2: "8.7",
+      semester3: "8.9",
+    },
+  },
+];
+
+// --------------------------------------------------
+// 5. CAREER GOALS
+// --------------------------------------------------
+
+const CAREER_GOALS = {
+  shortTerm: "Get an internship and build strong basics",
+  longTerm:
+    "Work as a developer, gain experience, and later explore opportunities abroad",
+};
+
+export {
+  TECH_STACK,
+  CURRENT_STATUS,
+  PROJECTS,
+  EDUCATION,
+  CAREER_GOALS,
+};
+
+/*
+$ user --status
+> Name: Divyansh Kumar
+> Role: BCA Student | Aspiring Full-Stack Developer
+> Location: Bangalore, India
+> Status: Learning • Building • Growing
+> LinkedIn: https://www.linkedin.com/in/divyansh-kumar-889057322/
+*/
