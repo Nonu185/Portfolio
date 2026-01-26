@@ -1,34 +1,95 @@
-import React from 'react'
-import { Rnd } from 'react-rnd'
-import "./window.scss"
+import React, { useState } from "react";
+import { Rnd } from "react-rnd";
+import "./window.scss";
 
-const MacWindow = ({ children, width = "45vw", height = "45vh", windowName, setWindowsState }) => {
-    return (
-        <Rnd
-            default={{
-                width: width,
-                height: height,
-                x: 300,
-                y: 200
-            }}
-        >
-            <div className="window">
-                <div className="nav">
-                    <div className="dots">
-                        <div onClick={() => setWindowsState(state => ({ ...state, [windowName]: false }))} className="dot red"></div>
-                        <div className="dot yellow"></div>
-                        <div className="dot green"></div>
-                    </div>
+const MacWindow = ({
+  children,
+  width = "45vw",
+  height = "45vh",
+  windowName,
+  setWindowsState,
+  index=0,
+}) => {
+  const [size, setSize] = useState({ width, height });
+  const set = 30;
+  const [position, setPosition] = useState({
+    x: 300 + index * set,
+    y: 200 + index * set,
+  });
 
-                    <div className="title"><p>Nonu - zsh - 80-75</p></div>
+  const [prevState, setPrevState] = useState(null);
+  const [isZoomed, setIsZoomed] = useState(false);
 
-                </div>
-                <div className="main-content">
-                    {children}
-                </div>
-            </div>
-        </Rnd>
-    )
-}
+  const handlegreendot = () => {
+  if (isZoomed) return;
+  const Nav_height = 42;
 
-export default MacWindow
+  setPrevState({
+    size,
+    position,
+  });
+
+  setSize({
+    width: "83vw",
+    height: "80vh",
+  });
+
+  setPosition({
+    x: window.innerWidth * 0.15,
+    y: Nav_height,
+  });
+
+  setIsZoomed(true);
+};
+
+const handleyellowdot = () => {
+  if (!prevState) return;
+
+  setSize(prevState.size);
+  setPosition(prevState.position);
+
+  setIsZoomed(false);
+};
+
+
+
+  return (
+    <Rnd
+      size={size}
+      position={position}
+      onDragStop={(e, d) => {
+        setPosition({ x: d.x, y: d.y });
+      }}
+      onResizeStop={(e, direction, ref, delta, pos) => {
+        setSize({
+          width: ref.style.width,
+          height: ref.style.height,
+        });
+        setPosition(pos);
+      }}
+      bounds="parent"
+    >
+      <div className="window">
+        <div className="nav">
+          <div className="dots">
+            <div
+              className="dot red"
+              onClick={() =>
+                setWindowsState((state) => ({
+                  ...state,
+                  [windowName]: false,
+                }))
+              }
+            />
+            <div className="dot yellow" onClick={handleyellowdot} />
+            <div className="dot green" onClick={handlegreendot}/>
+          </div>
+        </div>
+
+        <div className="main-content">{children}</div>
+      </div>
+    </Rnd>
+  );
+};
+
+export default MacWindow;

@@ -134,7 +134,7 @@ Enjoy exploring 🚀
 `;
 
   return (
-    <MacWindow windowName={windowName} setWindowsState={setWindowsState}>
+    <MacWindow windowName={windowName} setWindowsState={setWindowsState} index={4}>
       <div className="cli-window">
         <Terminal
           commands={commands}

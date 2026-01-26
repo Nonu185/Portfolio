@@ -17,12 +17,22 @@ const Note = ({ windowName, setWindowsState }) => {
     }, [])
 
     return (
-        <MacWindow windowName={windowName} setWindowsState={setWindowsState} >
-            <div className="note-window">
-                { markdown ? <SyntaxHighlighter language='typescript' style={atelierDuneDark} >{markdown}</SyntaxHighlighter> : <p>Loading...</p> }
-            </div>
-        </MacWindow>
-    )
+      <MacWindow
+        windowName={windowName}
+        setWindowsState={setWindowsState}
+        index={1}
+      >
+        <div className="note-window">
+          {markdown ? (
+            <SyntaxHighlighter language="typescript" style={atelierDuneDark}>
+              {markdown}
+            </SyntaxHighlighter>
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
+      </MacWindow>
+    );
 }
 
 export default Note

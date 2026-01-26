@@ -11,6 +11,7 @@ import Cli from './components/windows/Cli'
 
 
 
+
 function App() {
 
   const [windowsState, setWindowsState] = useState({
@@ -18,7 +19,7 @@ function App() {
     note: false,
     resume: false,
     spotify: false,
-    cli: false
+    cli: false,
   })
   
   return (

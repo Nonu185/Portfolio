@@ -4,7 +4,11 @@ import "./resume.scss";
 
 const Resume = ({ windowName, setWindowsState }) => {
   return (
-    <MacWindow windowName={windowName} setWindowsState={setWindowsState}>
+    <MacWindow
+      windowName={windowName}
+      setWindowsState={setWindowsState}
+      index={2}
+    >
       <div className="resume-window">
         <iframe src="/Divyansh CV.pdf" title="Resume" />
       </div>
