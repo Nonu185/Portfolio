@@ -10,7 +10,7 @@ const Resume = ({ windowName, setWindowsState }) => {
       index={2}
     >
       <div className="resume-window">
-        <iframe src="/Divyansh CV.pdf" title="Resume" />
+        <iframe src="/DivyanshKumar_CV  .pdf" title="Resume" />
       </div>
     </MacWindow>
   );

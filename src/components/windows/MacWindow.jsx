@@ -14,7 +14,7 @@ const MacWindow = ({
   const set = 30;
   const [position, setPosition] = useState({
     x: 300 + index * set,
-    y: 200 + index * set,
+    y: 220 + index * set,
   });
 
   const [prevState, setPrevState] = useState(null);

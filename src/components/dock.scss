@@ -25,6 +25,12 @@
         width: 3.75rem;
 
         transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
     }
 
     .github,
@@ -51,6 +57,11 @@
 
     .link {
         background: linear-gradient(to bottom, rgb(163, 97, 170), rgb(142, 33, 154));
+    }
+
+    .safari, .siri {
+        background: transparent;
+        padding: 0;
     }
 
     .icon:hover {

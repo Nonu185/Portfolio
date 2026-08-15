@@ -1,33 +1,53 @@
 /**
  * @file: profile.config.ts
  * @author: Divyansh Kumar
- * @summary: BCA student & aspiring full-stack developer
+ * @summary: BCA student & aspiring software developer
  */
 
 // ----------------------------------
-// 1. CORE DEPENDENCIES & SKILLS 
+// 1. CORE DEPENDENCIES & SKILLS
 // ----------------------------------
 
 const TECH_STACK = {
+  languages: [
+    "JavaScript",
+    "Java",
+    "Python",
+    "C",
+    "Shell Scripting",
+    "TypeScript",
+  ],
+
   frontend: [
-    "HTML",        // 100%
-    "CSS",         // 90%
-    "JavaScript",  // 90%
-    "React.js",    // 70%
-    "TailwindCSS", // 80%
+    "React.js",
+    "HTML5",
+    "CSS3",
+    "Tailwind CSS",
   ],
+
   backend: [
-    "Node.js",     // 10%
-    "Express.js",  // 10%
+    "Node.js",
+    "Express.js",
+    "REST APIs",
+    "JWT",
+    "OAuth",
   ],
+
   database: [
-    "MySQL",       // 70%
+    "MongoDB",
+    "MySQL",
+    "Redis",
   ],
+
   tools: [
-    "Git & GitHub", // 60%
-    "Figma",        // 50%
-    "Canva",        // 70%
-    "Linux",        // 60%
+    "Git",
+    "GitHub",
+    "Postman",
+    "Figma",
+    "Vercel",
+    "Render",
+    "Canva",
+    "Docker",
   ],
 };
 
@@ -36,34 +56,69 @@ const TECH_STACK = {
 // --------------------------------------------------
 
 const CURRENT_STATUS = {
-  role: "BCA Student",
-  university: "REVA University, Bangalore",
-  focus: "Full-stack development & UI/UX",
+  name: "Divyansh Kumar",
+  role: "BCA Student | Aspiring Software Developer",
+  university: "REVA University, Bengaluru",
+  degree: "Bachelor of Computer Applications",
+  location: "Bengaluru, India",
+  duration: "Aug 2024 – Aug 2027",
+  focus: "Full-stack development, AI applications & problem solving",
   availability: "Open to internships",
+  status: "Learning • Building • Growing",
 };
 
 // -----------------------
-// 3. PROJECTS 
+// 3. PROJECTS
 // -----------------------
 
 const PROJECTS = [
   {
-    name: "SkillSpace",
+    name: "Orvyn",
     description:
-      "An online learning platform concept for courses, mentorship, and skill exchange.",
-    tech: ["React", "TailwindCSS", "Node.js"],
+      "AI-powered search and research assistant providing real-time web search and context-aware responses.",
+    tech: [
+      "LangChain",
+      "Google Gemini",
+      "Tavily",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+    ],
   },
+
   {
-    name: "Snake Game",
+    name: "Web OS",
     description:
-      "A simple JavaScript game to improve logic and DOM handling.",
-    tech: ["HTML", "CSS", "JavaScript"],
+      "Mac OS-inspired browser operating system simulation and interactive developer portfolio with functional apps, window management, and Dock.",
+    tech: [
+      "React",
+      "JavaScript",
+      "CSS",
+      "Browser APIs",
+    ],
   },
+
   {
-    name: "NoCLang Simulator",
+    name: "Flakes.pdf",
     description:
-      "A visual simulator to understand Network-on-Chip concepts.",
-    tech: ["React", "JavaScript"],
+      "Client-side PDF and image utility supporting image-to-PDF conversion, PDF merging, compression, and file processing without a server.",
+    tech: [
+      "React",
+      "JavaScript",
+      "PDF Processing",
+      "Client-side APIs",
+    ],
+  },
+
+  {
+    name: "NOC Simulator",
+    description:
+      "Interactive Network-on-Chip simulator that visually demonstrates data flow between nodes through animated rendering.",
+    tech: [
+      "React",
+      "JavaScript",
+      "Animation",
+    ],
   },
 ];
 
@@ -75,24 +130,123 @@ const EDUCATION = [
   {
     institute: "REVA University",
     degree: "Bachelor of Computer Applications (BCA)",
-    duration: "2024 – 2027",
-    location: "Bangalore, India",
-    semesterPerformance: {
-      semester1: "8.5",
-      semester2: "8.7",
-      semester3: "8.9",
-    },
+    duration: "Aug 2024 – Aug 2027",
+    location: "Bengaluru, India",
+    cgpa: "8.85",
+    coursework: [
+      "Data Structures & Algorithms",
+      "Computer Networks",
+      "Operating Systems",
+      "Software Engineering",
+      "RDBMS",
+      "Design & Analysis of Algorithms",
+      "Java",
+      "Python",
+    ],
   },
 ];
 
 // --------------------------------------------------
-// 5. CAREER GOALS
+// 5. EXPERIENCE
+// --------------------------------------------------
+
+const EXPERIENCE = [
+  {
+    role: "Editorial & Content Head",
+    organization: "Software Coding Club, REVA University",
+    duration: "Nov 2025 – Present",
+    description:
+      "Spearheaded 6–7 technical events per semester, including hackathons and debugging competitions, while managing end-to-end logistics for 50+ participants per event.",
+  },
+
+  {
+    role: "Video Editor Intern",
+    organization: "Kampus",
+    duration: "Feb 2025 – Jul 2025",
+    description:
+      "Produced and delivered 3–4 short-form videos per month aligned with brand identity for Instagram and YouTube.",
+  },
+];
+
+// --------------------------------------------------
+// 6. CERTIFICATIONS
+// --------------------------------------------------
+
+const CERTIFICATIONS = [
+  {
+    name: "Introduction to Generative AI",
+    issuer: "Google Cloud, Coursera",
+    date: "Feb 2025",
+  },
+
+  {
+    name: "Database Management Systems (RDBMS) and Microsoft Fabric SQL",
+    issuer: "Udemy",
+    date: "Dec 2025",
+  },
+
+  {
+    name: "Python PCAP: Certified Associate in Python Programming",
+    issuer: "Udemy",
+    date: "May 2026",
+  },
+];
+
+// --------------------------------------------------
+// 7. SOFT SKILLS
+// --------------------------------------------------
+
+const SOFT_SKILLS = [
+  "Problem Solving",
+  "Team Collaboration",
+  "Communication",
+  "Time Management",
+];
+
+// --------------------------------------------------
+// 8. CAREER GOALS
 // --------------------------------------------------
 
 const CAREER_GOALS = {
-  shortTerm: "Get an internship and build strong basics",
+  shortTerm:
+    "Secure a software development internship and strengthen full-stack development, DSA, and core CS fundamentals.",
+
   longTerm:
-    "Work as a developer, gain experience, and later explore opportunities abroad",
+    "Grow into a strong software developer by building real-world products and exploring advanced opportunities in software and AI.",
+};
+
+// --------------------------------------------------
+// 9. SOCIAL LINKS
+// --------------------------------------------------
+
+const SOCIAL_LINKS = {
+  linkedin:
+    "https://www.linkedin.com/in/divyansh-kumar-889057322/",
+
+  github:
+    "https://github.com/Nonu185",
+};
+
+// --------------------------------------------------
+// 10. TERMINAL PROFILE
+// --------------------------------------------------
+
+const TERMINAL_PROFILE = {
+  name: "Divyansh Kumar",
+  role: "BCA Student | Aspiring Software Developer",
+  location: "Bengaluru, India",
+  status: "Learning • Building • Growing",
+
+  commands: [
+    "about",
+    "skills",
+    "projects",
+    "experience",
+    "education",
+    "certifications",
+    "resume",
+    "contact",
+  ],
 };
 
 export {
@@ -100,14 +254,10 @@ export {
   CURRENT_STATUS,
   PROJECTS,
   EDUCATION,
+  EXPERIENCE,
+  CERTIFICATIONS,
+  SOFT_SKILLS,
   CAREER_GOALS,
+  SOCIAL_LINKS,
+  TERMINAL_PROFILE,
 };
-
-/*
-$ user --status
-> Name: Divyansh Kumar
-> Role: BCA Student | Aspiring Full-Stack Developer
-> Location: Bangalore, India
-> Status: Learning • Building • Growing
-> LinkedIn: https://www.linkedin.com/in/divyansh-kumar-889057322/
-*/
