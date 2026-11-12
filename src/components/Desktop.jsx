@@ -21,9 +21,13 @@ const Desktop = ({
 
   const handleStickyMouseDown = (e, note) => {
     if (e.target.closest(".sticky-close")) return;
+    const currentX =
+      note.x !== undefined
+        ? note.x
+        : window.innerWidth - (note.right || 330) - 145;
     setDraggingNoteId(note.id);
     dragOffsetRef.current = {
-      x: e.clientX - note.x,
+      x: e.clientX - currentX,
       y: e.clientY - note.y,
     };
   };
@@ -35,7 +39,11 @@ const Desktop = ({
         const newX = Math.max(10, Math.min(window.innerWidth - 170, e.clientX - dragOffsetRef.current.x));
         const newY = Math.max(40, Math.min(window.innerHeight - 170, e.clientY - dragOffsetRef.current.y));
         setStickyNotes((prev) =>
-          prev.map((n) => (n.id === draggingNoteId ? { ...n, x: newX, y: newY } : n))
+          prev.map((n) =>
+            n.id === draggingNoteId
+              ? { ...n, x: newX, y: newY, right: undefined }
+              : n
+          )
         );
       }
     };
@@ -247,36 +255,47 @@ const Desktop = ({
 
       {/* Pinned Desktop Sticky Notes */}
       {stickyNotes &&
-        stickyNotes.map((note) => (
-          <div
-            key={note.id}
-            className="desktop-sticky"
-            onMouseDown={(e) => handleStickyMouseDown(e, note)}
-            style={{
-              left: `${note.x}px`,
-              top: `${note.y}px`,
-              transform: `rotate(${note.rotation}deg)`,
-              backgroundColor: note.color.bg,
-              borderColor: note.color.border,
-              color: note.color.text,
-              cursor: draggingNoteId === note.id ? "grabbing" : "grab",
-            }}
-          >
-            <div className="sticky-pin" />
-            <button
-              className="sticky-close"
-              onClick={(e) => {
-                e.stopPropagation();
-                removeSticky(note.id);
-              }}
-              title="Remove sticky note"
+        stickyNotes.map((note) => {
+          const style = {
+            top: `${note.y}px`,
+            transform: `rotate(${note.rotation}deg)`,
+            backgroundColor: note.color.bg,
+            borderColor: note.color.border,
+            color: note.color.text,
+            cursor: draggingNoteId === note.id ? "grabbing" : "grab",
+          };
+
+          if (note.x !== undefined) {
+            style.left = `${note.x}px`;
+          } else if (note.right !== undefined) {
+            style.right = `${note.right}px`;
+          } else {
+            style.left = `${note.x || 100}px`;
+          }
+
+          return (
+            <div
+              key={note.id}
+              className="desktop-sticky"
+              onMouseDown={(e) => handleStickyMouseDown(e, note)}
+              style={style}
             >
-              ×
-            </button>
-            <div className="sticky-author">{note.author}</div>
-            <div className="sticky-content">{note.content}</div>
-          </div>
-        ))}
+              <div className="sticky-pin" />
+              <button
+                className="sticky-close"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeSticky(note.id);
+                }}
+                title="Remove sticky note"
+              >
+                ×
+              </button>
+              <div className="sticky-author">{note.author}</div>
+              <div className="sticky-content">{note.content}</div>
+            </div>
+          );
+        })}
 
       {/* Right-Side Widget Rail */}
       <aside id="widget-rail">
