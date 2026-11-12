@@ -1,29 +1,178 @@
 * {
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html,
 body,
 #root {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-main{
-    height: 100%;
-    width: 100%;
-
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-
-    position: relative;
-
-    overflow: hidden;
+main {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  background-color: #1e3a8a;
+  transition: background-image 0.4s ease;
 }
 
 body {
-    background-color: black;
+  background-color: #0b132b;
+}
+
+/* ================= Folder & Tile Transitions ================= */
+.cs-folder-img {
+  transition: filter 0.3s ease;
+}
+
+.folder-tile {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ================= Theme Variants ================= */
+
+main[data-theme="blue"] {
+  .cs-folder-img {
+    filter: drop-shadow(0 4px 10px rgba(10, 20, 40, 0.3));
+  }
+}
+
+main[data-theme="purple"] {
+  background-color: #2e1065;
+
+  .cs-folder-img {
+    filter: hue-rotate(115deg) saturate(1.25) drop-shadow(0 4px 12px rgba(40, 15, 60, 0.35)) !important;
+  }
+
+  .folder-tile {
+    background: rgba(192, 132, 252, 0.22) !important;
+    border-color: rgba(216, 180, 254, 0.45) !important;
+  }
+
+  .avail {
+    color: #f3e8ff !important;
+  }
+
+  .hero-more {
+    background: rgba(168, 85, 247, 0.25) !important;
+    border-color: rgba(168, 85, 247, 0.4) !important;
+  }
+}
+
+main[data-theme="green"] {
+  background-color: #14532d;
+
+  .cs-folder-img {
+    filter: hue-rotate(-95deg) saturate(1.1) brightness(0.95) drop-shadow(0 4px 12px rgba(15, 45, 25, 0.35)) !important;
+  }
+
+  .folder-tile {
+    background: rgba(74, 222, 128, 0.2) !important;
+    border-color: rgba(134, 239, 172, 0.45) !important;
+  }
+
+  .avail {
+    color: #dcfce7 !important;
+  }
+
+  .hero-more {
+    background: rgba(34, 197, 94, 0.25) !important;
+    border-color: rgba(34, 197, 94, 0.4) !important;
+  }
+}
+
+main[data-theme="black"] {
+  background-color: #09090b;
+
+  .cs-folder-img {
+    filter: grayscale(1) brightness(1.65) contrast(0.95) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5)) !important;
+  }
+
+  .folder-tile {
+    background: rgba(255, 255, 255, 0.14) !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+  }
+
+  .widget,
+  #wallpaper-picker {
+    background: rgba(18, 24, 38, 0.72) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #f1f5f9 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important;
+
+    .w-title,
+    .wp-title {
+      color: #94a3b8 !important;
+    }
+
+    .wx-card {
+      background: rgba(255, 255, 255, 0.07) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+
+      .wx-loc {
+        color: #f8fafc !important;
+      }
+      .wx-temp {
+        color: #93c5fd !important;
+      }
+      .wx-foot {
+        color: #cbd5e1 !important;
+      }
+    }
+
+    .aw-badge-row {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border-color: rgba(255, 255, 255, 0.08) !important;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+      }
+
+      .aw-info {
+        .aw-name {
+          color: #f8fafc !important;
+        }
+        .aw-desc {
+          color: #94a3b8 !important;
+        }
+      }
+    }
+
+    .mp-fallback {
+      color: #93c5fd !important;
+    }
+  }
+
+  .desktop-stage .icon-tile {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
 }

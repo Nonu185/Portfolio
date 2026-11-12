@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
 import { Pinecone } from '@pinecone-database/pinecone';
@@ -41,8 +40,8 @@ async function processDirectory(dirPath) {
 
       if (match) {
         const frontmatter = match[1];
-        text = match[2].trim();
-        frontmatter.split('\\n').forEach(line => {
+        text = match[2] ? match[2].trim() : '';
+        frontmatter.split(/\r?\n/).forEach(line => {
           const [key, ...values] = line.split(':');
           if (key && values.length > 0) {
             metadata[key.trim()] = values.join(':').trim();

@@ -1,49 +1,667 @@
-.desktop-icons {
+.desktop-stage {
   position: absolute;
-  top: 80px; 
-  left: 35px;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+  inset: 0;
+  top: 40px; /* underneath nav */
+  bottom: 80px; /* above dock */
+  overflow: hidden;
+  user-select: none;
+  pointer-events: auto;
   z-index: 1;
-  
-  .desktop-folder {
+  isolation: isolate;
+
+  /* ================= Blueprint Chrome Lines ================= */
+  .bp-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.12);
+    pointer-events: none;
+    z-index: 1;
+
+    &.v {
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      height: 100%;
+    }
+  }
+
+  .crosshair {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    z-index: 2;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    &::before {
+      top: 8px;
+      left: 0;
+      width: 18px;
+      height: 1px;
+    }
+
+    &::after {
+      top: 0;
+      left: 8px;
+      width: 1px;
+      height: 18px;
+    }
+  }
+
+  .coord-tracker {
+    position: absolute;
+    left: 28px;
+    top: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "JetBrains Mono", monospace, monospace;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    z-index: 5;
+
+    .dot-sep {
+      opacity: 0.5;
+    }
+  }
+
+  /* ================= Hero Intro Block (#brand-stack) ================= */
+  #brand-stack {
+    position: absolute;
+    top: 40px;
+    left: 180px;
+    z-index: 10;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 80px;
-    cursor: pointer;
-    border-radius: 6px;
-    padding: 5px;
-    transition: background-color 0.2s;
-    
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-    
-    &:active {
-      background-color: rgba(255, 255, 255, 0.4);
-    }
-    
-    .folder-icon {
-      margin-bottom: 5px;
-      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.4));
-      
-      img {
-        width: 70px;
-        height: 70px;
-        object-fit: contain;
+    max-width: 620px;
+    color: rgba(255, 255, 255, 0.95);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+
+    .hero-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 22px;
+
+      .hero-avatar-wrap {
+        position: relative;
+        width: 110px;
+        height: 110px;
+        flex-shrink: 0;
+
+        .hero-portrait {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+          object-position: center 25%;
+          border: 2px solid rgba(255, 255, 255, 0.45);
+          box-shadow: 0 10px 25px rgba(10, 20, 40, 0.3);
+          background: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+      .hero-col {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+
+        .avail {
+          display: inline-flex;
+          align-items: center;
+          font-size: 11px;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          font-weight: 700;
+          color: #dbeafe;
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-lede {
+          font-size: 13.5px;
+          line-height: 1.5;
+          margin: 0;
+          color: rgba(255, 255, 255, 0.95);
+          text-shadow: 0 1px 3px rgba(10, 20, 40, 0.4);
+          font-weight: 400;
+
+          &.sub-lede {
+            font-size: 12.5px;
+            color: rgba(255, 255, 255, 0.85);
+
+            strong {
+              color: #fff;
+              font-weight: 600;
+            }
+          }
+        }
+
+        .hero-more {
+          margin-top: 6px;
+          background: rgba(255, 255, 255, 0.15);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          backdrop-filter: blur(8px);
+          padding: 5px 12px;
+          border-radius: 999px;
+          cursor: pointer;
+          color: #fff;
+          font-family: inherit;
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.28);
+            transform: translateY(-1px);
+          }
+        }
       }
     }
-    
-    .folder-name {
-      color: white;
+  }
+
+  /* ================= Numbered Desktop Nodes Grid ================= */
+  .desktop-nodes-grid {
+    position: absolute;
+    top: 250px;
+    left: 180px;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(4, 140px);
+    column-gap: 36px;
+    row-gap: 28px;
+
+    .node-card {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      width: 140px;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+
+        .icon-tile {
+          box-shadow: 0 12px 28px rgba(15, 25, 45, 0.35);
+          border-color: rgba(255, 255, 255, 0.45);
+        }
+      }
+
+      .node-cap {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        border-top: 1px solid rgba(255, 255, 255, 0.4);
+        padding: 5px 0 6px;
+        margin-bottom: 6px;
+        font-family: "JetBrains Mono", monospace;
+        color: rgba(255, 255, 255, 0.95);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+
+        .cn {
+          grid-column: 1;
+          grid-row: 1;
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.04em;
+        }
+
+        .cd {
+          grid-column: 1;
+          grid-row: 2;
+          font-size: 10px;
+          margin-top: 2px;
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        .cx {
+          grid-column: 2;
+          grid-row: 1 / span 2;
+          font-style: normal;
+          font-size: 11px;
+          color: rgba(255, 255, 255, 0.65);
+        }
+      }
+
+      .icon-tile {
+        position: relative;
+        width: 96px;
+        height: 96px;
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        backdrop-filter: blur(14px) saturate(150%);
+        box-shadow: 0 8px 20px rgba(10, 20, 40, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        transition: all 0.2s ease;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          filter: drop-shadow(0 4px 10px rgba(10, 20, 40, 0.3));
+        }
+      }
+    }
+  }
+
+  /* ================= Scattered Polaroids ================= */
+  .polaroid-node {
+    position: absolute;
+    background: #fff;
+    padding: 6px 6px 12px;
+    border-radius: 4px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    z-index: 8;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      transform: scale(1.06) rotate(0deg) !important;
+      z-index: 25;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    }
+
+    .polaroid-pin {
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: #ef4444;
+      border-radius: 50%;
+      border: 1.5px solid #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .polaroid-img {
+      overflow: hidden;
+      border-radius: 2px;
+
+      img {
+        display: block;
+        object-fit: cover;
+      }
+    }
+
+    .polaroid-caption {
+      margin-top: 6px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       text-align: center;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+      .p-title {
+        display: block;
+        font-size: 10px;
+        font-weight: 600;
+        color: #1e293b;
+      }
+
+      .p-sub {
+        display: block;
+        font-size: 8.5px;
+        color: #64748b;
+      }
+    }
+
+    &.p1 {
+      top: 255px;
+      left: 880px;
+      transform: rotate(3.5deg);
+
+      .polaroid-img img {
+        width: 100px;
+        height: 95px;
+        object-position: center 45%;
+      }
+    }
+
+    &.p2 {
+      top: 425px;
+      left: 890px;
+      transform: rotate(-4deg);
+
+      .polaroid-img img {
+        width: 110px;
+        height: 80px;
+        object-position: center center;
+      }
+    }
+  }
+
+  /* ================= Pinned Sticky Notes ================= */
+  .desktop-sticky {
+    position: absolute;
+    width: 145px;
+    padding: 10px 12px 12px;
+    border-radius: 4px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    z-index: 12;
+    cursor: grab;
+    user-select: none;
+    transition: box-shadow 0.18s ease;
+
+    &:active {
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+      z-index: 50;
+    }
+
+    .sticky-pin {
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: #3b82f6;
+      border-radius: 50%;
+      border: 1.5px solid #fff;
+    }
+
+    .sticky-close {
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      background: transparent;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      color: inherit;
+      opacity: 0.6;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .sticky-author {
+      font-size: 10.5px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .sticky-content {
       font-size: 12px;
-      font-weight: normal;
-      word-wrap: break-word;
-      line-height: 1.2;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+  }
+
+  /* ================= Right-Side Widget Rail (#widget-rail) ================= */
+  #widget-rail {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 290px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    #wallpaper-picker {
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(18px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 14px;
+      padding: 9px 14px;
+      box-shadow: 0 10px 30px rgba(20, 35, 60, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      transition: all 0.3s ease;
+
+      .wp-title {
+        font-size: 9.5px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #475569;
+        font-weight: 700;
+      }
+
+      .wp-grid {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+
+        .wp-swatch {
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          cursor: pointer;
+          border: 1.5px solid rgba(255, 255, 255, 0.85);
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+          transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+          &:hover {
+            transform: scale(1.18);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+          }
+
+          &.active {
+            box-shadow: 0 0 0 2px #ffffff, 0 3px 10px rgba(0, 0, 0, 0.35);
+            transform: scale(1.15);
+          }
+        }
+      }
+    }
+
+    .widget {
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(18px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 10px 30px rgba(20, 35, 60, 0.15);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #1e293b;
+
+      .w-title {
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #475569;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .aw-count {
+          opacity: 0.6;
+        }
+      }
+
+      /* Weather Widget */
+      &#weather-widget {
+        .wx-pair {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+
+          .wx-card {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
+            padding: 8px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+
+            .wx-loc {
+              font-size: 11px;
+              font-weight: 600;
+              color: #0f172a;
+              display: flex;
+              align-items: center;
+              gap: 4px;
+
+              .pin-dot {
+                font-size: 10px;
+              }
+            }
+
+            .wx-temp {
+              font-size: 26px;
+              font-weight: 700;
+              color: #1e3a8a;
+              line-height: 1.1;
+            }
+
+            .wx-foot {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              font-size: 10.5px;
+              color: #475569;
+            }
+          }
+        }
+      }
+
+      /* Music Widget */
+      &#music-widget {
+        .mp-embed {
+          border-radius: 10px;
+          overflow: hidden;
+        }
+
+        .mp-fallback {
+          display: block;
+          margin-top: 6px;
+          text-align: right;
+          font-size: 10.5px;
+          color: #2563eb;
+          text-decoration: none;
+          font-weight: 500;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      /* Awards Widget */
+      &#awards-widget {
+        .aw-items {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          .aw-badge-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 8px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: background 0.18s ease;
+
+            &:hover {
+              background: rgba(255, 255, 255, 0.7);
+            }
+
+            .aw-icon {
+              width: 32px;
+              height: 32px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 11px;
+              font-weight: 700;
+              color: #fff;
+              flex-shrink: 0;
+
+              &.leetcode {
+                background: linear-gradient(135deg, #f59e0b, #d97706);
+              }
+
+              &.sih {
+                background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+                font-size: 9.5px;
+              }
+
+              &.club {
+                background: linear-gradient(135deg, #10b981, #059669);
+              }
+            }
+
+            .aw-info {
+              .aw-name {
+                font-size: 11.5px;
+                font-weight: 600;
+                color: #0f172a;
+              }
+
+              .aw-desc {
+                font-size: 10px;
+                color: #64748b;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* Responsive styling for smaller viewports */
+  @media (max-width: 1180px) {
+    #brand-stack {
+      left: 40px;
+      max-width: 500px;
+    }
+
+    .desktop-nodes-grid {
+      left: 40px;
+      grid-template-columns: repeat(3, 140px);
+    }
+
+    .polaroid-node {
+      display: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    #widget-rail {
+      display: none;
+    }
+
+    #brand-stack {
+      left: 20px;
+      max-width: 90%;
+    }
+
+    .desktop-nodes-grid {
+      left: 20px;
+      top: 240px;
+      grid-template-columns: repeat(2, 140px);
     }
   }
 }

@@ -1,0 +1,128 @@
+.experience-window {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: #0d121b;
+  color: #f1f5f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-y: auto;
+
+  .exp-header {
+    padding: 24px 28px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(13, 18, 27, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+
+    h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+  }
+
+  .exp-timeline {
+    padding: 24px 28px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    .exp-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(59, 130, 246, 0.4);
+      }
+
+      .exp-item-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+
+        .exp-badge-group {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .exp-badge {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+          }
+
+          .exp-demo-link {
+            font-size: 11px;
+            color: #38bdf8;
+            text-decoration: none;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            transition: all 0.2s ease;
+
+            &:hover {
+              background: rgba(56, 189, 248, 0.22);
+              border-color: rgba(56, 189, 248, 0.45);
+              text-decoration: none;
+            }
+          }
+        }
+
+        .exp-period {
+          font-size: 12px;
+          color: #94a3b8;
+          font-family: monospace;
+        }
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      .exp-org {
+        font-size: 13px;
+        color: #38bdf8;
+        margin: 4px 0 12px;
+        font-weight: 500;
+      }
+
+      .exp-bullets {
+        margin: 0;
+        padding-left: 18px;
+        color: #cbd5e1;
+        font-size: 13px;
+        line-height: 1.6;
+
+        li {
+          margin-bottom: 4px;
+        }
+      }
+    }
+  }
+}
+

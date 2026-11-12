@@ -1,0 +1,236 @@
+export const profileConfigCode = `/**
+ * @file: profile.config.ts
+ * @author: Divyansh Kumar
+ * @summary: Full-Stack Developer | Generative AI
+ */
+
+// ----------------------------------
+// 1. PROFESSIONAL SUMMARY
+// ----------------------------------
+
+export const PROFESSIONAL_SUMMARY = {
+  name: "Divyansh Kumar",
+  headline: "Full-Stack Developer | Generative AI & Web Solutions",
+  bio: "Full-Stack Developer with hands-on experience designing and building scalable web applications and Generative AI solutions. Proficient in JavaScript, React.js, Node.js, Express.js, and MongoDB, with practical experience in backend development, REST APIs, secure authentication, LLM integration, and RAG pipelines. Strong foundation in Data Structures and Algorithms, problem-solving, and writing scalable, maintainable code.",
+  location: "Bengaluru, India",
+  phone: "+91-9234148912",
+  email: "divyanshrai6200@gmail.com",
+  links: {
+    github: "https://github.com/Nonu185",
+    linkedin: "https://www.linkedin.com/in/divyansh-kumar-889057322/",
+    leetcode: "https://leetcode.com/u/mjauXDneVZ/",
+  },
+};
+
+// ----------------------------------
+// 2. TECHNICAL SKILLS & TECH STACK
+// ----------------------------------
+
+export const TECH_STACK = {
+  languages: [
+    "JavaScript",
+    "Java",
+    "Python",
+    "C",
+    "TypeScript",
+  ],
+
+  frontend: [
+    "React.js",
+    "HTML5",
+    "CSS3",
+    "Tailwind CSS",
+  ],
+
+  backend: [
+    "Node.js",
+    "Express.js",
+    "REST APIs",
+    "JWT",
+    "OAuth",
+  ],
+
+  databases: [
+    "MongoDB",
+    "MySQL",
+    "Redis",
+    "Pinecone",
+  ],
+
+  aiAndLLMs: [
+    "Generative AI",
+    "LLMs",
+    "Prompt Engineering",
+    "RAG Pipelines",
+    "LangChain",
+  ],
+
+  developerTools: [
+    "Git",
+    "GitHub",
+    "Postman",
+    "Docker",
+    "Vercel",
+    "Render",
+  ],
+
+  coreCS: [
+    "Data Structures & Algorithms",
+    "Object-Oriented Programming (OOP)",
+    "Database Management Systems (DBMS)",
+    "Operating Systems",
+    "Computer Networks",
+  ],
+
+  softSkills: [
+    "Problem Solving",
+    "Team Collaboration",
+    "Communication",
+    "Time Management",
+  ],
+};
+
+// ----------------------------------
+// 3. FEATURED PROJECTS
+// ----------------------------------
+
+export const PROJECTS = [
+  {
+    name: "Orvyn – AI-Powered Search & Research Assistant",
+    description:
+      "Built an AI-powered research assistant using LangChain, Google Gemini, and Tavily for real-time web search and context-aware responses, with a Node.js, Express.js, and MongoDB backend supporting secure JWT authentication and conversation management.",
+    tech: ["LangChain", "Google Gemini", "Tavily", "Node.js", "Express.js", "MongoDB", "JWT"],
+    link: "https://orvyn-ochre.vercel.app",
+    badge: "Gen AI",
+  },
+  {
+    name: "Interactive Web Workspace & Portfolio",
+    description:
+      "Created an interactive browser-based portfolio workspace featuring functional window management, custom applications, and an integrated AI chatbot powered by RAG and Pinecone for context-aware responses about my engineering profile.",
+    tech: ["React.js", "JavaScript", "SCSS", "RAG", "Pinecone", "Google Gemini"],
+    link: "https://divyanshkumar.dev",
+    badge: "Full-Stack / AI",
+  },
+  {
+    name: "Flakes.pdf – PDF & Image Utility",
+    description:
+      "Engineered a browser-based PDF utility supporting image-to-PDF conversion, PDF merging, and file compression through client-side processing, reducing server dependency while keeping users' files on their devices.",
+    tech: ["React.js", "JavaScript", "Client-Side Processing", "Web APIs"],
+    link: "https://flakespdf.vercel.app",
+    badge: "Utility",
+  },
+  {
+    name: "NOC Simulator – Network-on-Chip Simulator",
+    description:
+      "Developed a React-based interactive simulator in collaboration with a professor working on an emerging Network-on-Chip architecture language, enabling visualization of network architecture and communication flows.",
+    tech: ["React.js", "Interactive Data Flow", "SVG/Canvas", "Computer Architecture"],
+    link: "https://noclang-simulator.vercel.app/",
+    badge: "Research / Sim",
+  },
+];
+
+// ----------------------------------
+// 4. CLIENT WORK & EXPERIENCE
+// ----------------------------------
+
+export const WORK_EXPERIENCE = [
+  {
+    role: "Freelance Web Developer",
+    client: "Dr. Rao's Naturals – E-commerce Website",
+    duration: "27 Aug 2026 – 30 Sep 2026",
+    link: "https://drraosnaturals.com",
+    highlights: [
+      "Developed a responsive e-commerce platform with product management, an admin dashboard, and Cloudinary-powered image uploads using React, Node.js, Express.js, and MongoDB.",
+    ],
+  },
+  {
+    role: "Freelance Web Developer",
+    client: "Prof. P. V. Rao – Academic Portfolio",
+    duration: "1 Oct 2026 – 30 Oct 2026",
+    link: "https://profpvrao.com",
+    highlights: [
+      "Developed a multi-page academic portfolio with an admin dashboard and backend integration for dynamic content management.",
+    ],
+  },
+  {
+    role: "Video Editor Intern",
+    organization: "Kampus",
+    duration: "Feb 2025 – Jul 2025",
+    highlights: [
+      "Produced 3–4 short-form videos per month aligned with brand identity for social media platforms.",
+    ],
+  },
+  {
+    role: "Technical Event Coordinator",
+    organization: "Software Coding Club, REVA University",
+    duration: "Nov 2025 – Present",
+    highlights: [
+      "Coordinated 5+ technical events, coding bootcamps, and hackathons.",
+      "Participated in multiple hackathons, including Smart India Hackathon (SIH) 2026, advancing to Round 2.",
+    ],
+  },
+];
+
+// ----------------------------------
+// 5. EDUCATION
+// ----------------------------------
+
+export const EDUCATION = [
+  {
+    degree: "Bachelor of Computer Applications (BCA)",
+    institution: "REVA University, Bengaluru",
+    duration: "Aug 2024 – Aug 2027",
+    cgpa: "8.85",
+    coursework: [
+      "Data Structures & Algorithms",
+      "Operating Systems",
+      "Computer Networks",
+      "Database Management Systems (RDBMS)",
+      "Object-Oriented Programming (Java/Python)",
+      "Software Engineering",
+    ],
+  },
+];
+
+// ----------------------------------
+// 6. CERTIFICATIONS
+// ----------------------------------
+
+export const CERTIFICATIONS = [
+  {
+    title: "Introduction to Generative AI",
+    issuer: "Google Cloud, Coursera",
+    date: "February 2025",
+  },
+  {
+    title: "Database Management Systems (RDBMS) and Microsoft Fabric SQL",
+    issuer: "Udemy",
+    date: "December 2025",
+  },
+  {
+    title: "Python PCAP: Certified Associate in Python Programming",
+    issuer: "Udemy",
+    date: "May 2026",
+  },
+];
+
+// ----------------------------------
+// 7. ACHIEVEMENTS & METRICS
+// ----------------------------------
+
+export const ACHIEVEMENTS = [
+  {
+    category: "Problem Solving",
+    detail: "Solved 80+ problems across LeetCode and GeeksforGeeks.",
+  },
+  {
+    category: "Hackathons",
+    detail: "Participated in Smart India Hackathon (SIH) 2026, advancing to Round 2.",
+  },
+  {
+    category: "Leadership",
+    detail: "Coordinated 5+ technical events through Software Coding Club at REVA University.",
+  },
+];
+`;
+

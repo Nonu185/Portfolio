@@ -1,31 +1,26 @@
 import React, { useState, useEffect } from 'react'
 
 const DateTime = () => {
-  const [dateTime, setDateTime] = useState('')
+  const [dateStr, setDateStr] = useState('')
+  const [timeStr, setTimeStr] = useState('')
 
   useEffect(() => {
-    const updateDateTime = () => {
+    const update = () => {
       const now = new Date()
-      const formattedDateTime = now.toLocaleString('en-US', {
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit',
-        hour12: true
-      }).replace(/,/g, '')
-      
-      setDateTime(formattedDateTime)
+      setDateStr(now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }))
+      setTimeStr(now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }))
     }
 
-    updateDateTime()
-    const interval = setInterval(updateDateTime, 1000)
-
+    update()
+    const interval = setInterval(update, 1000)
     return () => clearInterval(interval)
   }, [])
 
   return (
-    <div>{dateTime}</div>
+    <div className="datetime-wrap">
+      <span className="datebox">{dateStr}</span>
+      <span className="clock">{timeStr}</span>
+    </div>
   )
 }
 
